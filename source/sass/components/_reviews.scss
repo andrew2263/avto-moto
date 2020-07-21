@@ -1,0 +1,149 @@
+.reviews {
+    position: relative;
+}
+
+.reviews__new {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 1px solid #d12136;
+    background-color: transparent;
+    height: 52px;
+    width: 189px;
+    color: #d12136;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0.12em;
+    transition: all .5s;
+
+    &:hover {
+        background-color: #d12136;
+        color: #fff;
+        transition: all .5s;
+    }
+}
+
+.reviews__item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    &:first-child {
+        padding-top: 0;
+    }
+}
+
+.reviews__item h3 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    margin-bottom: 10px;
+}
+
+.reviews__mark {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+
+    &::before {
+        color: #d12136;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 20px;
+        margin-right: 10px;
+    }
+}
+
+.reviews__mark h4,
+.reviews__comment h4 {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    color: #000;
+}
+
+.reviews__mark p,
+.reviews__comment p {
+    color: #000;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.reviews__mark_advantages {
+    &::before {
+        content: "+";
+    }
+}
+
+.reviews__mark_minuses {
+    &::before {
+        content: "-";
+    }
+}
+
+.reviews__comment {
+    margin-bottom: 15px;
+}
+
+.reviews__rating {
+    margin-bottom: 25px;
+}
+
+.reviews__rate-list {
+    display: inline-flex;
+    flex-direction: row;
+    margin-right: 20px;
+}
+
+.reviews__rate-item {
+    width: 17px;
+    height: 17px;
+    background-image: url('../img/star_gray.svg');
+    background-repeat: no-repeat;
+    margin-right: 5px;
+
+    &_red {
+        background-image: url('../img/star_red.svg');
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.reviews__advice {
+    display: inline-block;
+    color: #d12136;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.reviews__footer {
+    display: flex;
+    flex-direction: row;
+}
+
+.reviews__time {
+    display: inline-block;
+    font-style: normal;
+    font-weight: 500;
+    color: #000;
+    opacity: 0.4;
+    font-size: 14px;
+    line-height: 19px;
+    margin-right: 25px;
+}
+
+.reviews__answer-button {
+    border: none;
+    background-color: transparent;
+    color: #d12136;
+    font-size: 16px;
+    line-height: 22px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

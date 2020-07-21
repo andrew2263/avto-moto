@@ -1,0 +1,121 @@
+.tabs {
+    padding-bottom: 140px;
+    margin-right: 6px;
+}
+
+.tabs__list {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.tabs__link {
+    transition: all .5s;
+}
+
+.tabs__item {
+    width: 195px;
+    height: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d7d9df;
+    font-size: 20px;
+    line-height: 27px;
+    transition: all .5s;
+
+    &_active,
+    &_active .tabs__link,
+    &:hover,
+    &:hover .tabs__link {
+        border: none;
+        color: #fff;
+        transition: all .5s;
+    }
+
+    &_active,
+    &:hover {
+        background-color: #d12136;
+    }
+}
+
+.tabs__panel {
+    display: none;
+
+    &_active {
+        display: block;
+    }
+}
+
+.specs {
+    width: 565px;
+    border-spacing: 0;
+}
+
+.specs td {
+    border-bottom: 1px solid #d7d9df;
+    font-size: 16px;
+    line-height: 22px;
+    padding-top: 20px;
+    padding-bottom: 8px;
+
+    &:first-child {
+        padding-top: 0;
+    }
+}
+
+.specs__spec {
+    text-align: left;
+}
+
+.specs__value {
+    text-align: right;
+}
+
+.faded {
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.faded.in {
+    opacity: 1;
+    transition: opacity .5s;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: row;
+}
+
+.contacts__text {
+    margin-right: 90px;
+    color: #1a212f;
+}
+
+.contacts__text h3 {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.contacts__text address {
+    font-size: 14px;
+    line-height: 19px;
+    color: #000;
+    font-style: normal;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+.contacts__text p,
+.contacts__text a {
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.contacts__text a:hover {
+    text-decoration: underline;
+}
+

@@ -1,0 +1,19 @@
+.footer {
+    padding: 30px 0;
+    background-color: #f5f5f9;
+}
+
+.footer__list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__link {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
