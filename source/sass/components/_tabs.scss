@@ -10,6 +10,11 @@
 
 .tabs__link {
     transition: all .5s;
+
+    &:hover {
+        color: #fff;
+        transition: all .5s;
+    }
 }
 
 .tabs__item {
@@ -24,16 +29,15 @@
     transition: all .5s;
 
     &_active,
-    &_active .tabs__link,
-    &:hover,
-    &:hover .tabs__link {
+    &_hover,
+    &_active .tabs__link {
         border: none;
         color: #fff;
         transition: all .5s;
     }
 
     &_active,
-    &:hover {
+    &_hover {
         background-color: #d12136;
     }
 }

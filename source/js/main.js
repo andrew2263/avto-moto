@@ -71,14 +71,95 @@
             }, 150);
             for (let tabsItem of tabsItems) {
                 tabsItem.classList.remove('tabs__item_active');
+                tabsItem.classList.remove('tabs__item_hover');
             }
             tabsLink.parentNode.classList.add('tabs__item_active');
-        })
+        });
+    }
+
+    for (let tabsLink of tabsLinks) {
+            tabsLink.addEventListener('mouseover', (e) => {
+                e.preventDefault();
+                if (!tabsLink.parentNode.classList.contains('tabs__item_active')) {
+                    tabsLink.parentNode.classList.add('tabs__item_hover');
+                }
+            });
+
+            tabsLink.addEventListener('mouseout', (e) => {
+                e.preventDefault();
+                if (!tabsLink.parentNode.classList.contains('tabs__item_active')) {
+                    tabsLink.parentNode.classList.remove('tabs__item_hover');
+                }
+            });
+
+        
     }
 
     let addReview = document.querySelector('.reviews__new');
     let popupContainer = document.querySelector('.popup-container');
     let popupClose = document.querySelector('.popup__close');
+    let form = document.querySelector('.popup__form');
+    let reviewsList = document.querySelector('.reviews__list');
+    let reviewsItem = document.querySelector('.reviews__item');
+    let submitButton = document.getElementById('review-submit');
+    let reviewName = document.getElementById('review-name');
+    let reviewText = document.getElementById('review-text');
+
+    let submitForm = () => {
+        let newReviewsItem = reviewsItem.cloneNode(true);
+        let reviewHeading = newReviewsItem.querySelector('h3');
+        let reviewAdvantages = newReviewsItem.querySelector('.reviews__mark_advantages').querySelector('p');
+        let reviewMinuses = newReviewsItem.querySelector('.reviews__mark_minuses').querySelector('p');
+        let reviewComment = newReviewsItem.querySelector('.reviews__comment').querySelector('p');
+        if (reviewName.value !== '' && reviewText.value !== '') {
+            reviewHeading.innerHTML = reviewName.value;
+            reviewAdvantages.innerHTML = document.getElementById('review-advantages').value;
+            reviewMinuses.innerHTML = document.getElementById('review-minuses').value;
+            reviewComment.innerHTML = reviewText.value;
+            reviewsList.appendChild(newReviewsItem);
+            popupContainer.style.display = 'none';
+            cleanForm();
+            return;
+        }
+        if (reviewName.value === '') {
+            if (reviewText.value !== '') {
+                reviewText.classList.remove('popup__textarea_empty');
+                reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
+            }
+            reviewName.classList.add('popup__input_empty');
+            reviewName.parentNode.classList.add('popup__input-wrap_empty');
+        }
+        if (reviewText.value === '') {
+            if (reviewName.value !== '') {
+                reviewName.classList.remove('popup__input_empty');
+                reviewName.parentNode.classList.remove('popup__input-wrap_empty');
+            }
+            reviewText.classList.add('popup__textarea_empty');
+            reviewText.parentNode.classList.add('popup__textarea-wrap_empty');
+        }
+    }
+
+    let cleanForm = () => {
+        reviewName.value = '';
+        document.getElementById('review-advantages').value = '';
+        document.getElementById('review-minuses').value = '';
+        reviewText.value = '';reviewName.classList.remove('popup__input_empty');
+        reviewName.parentNode.classList.remove('popup__input-wrap_empty');
+        reviewText.classList.remove('popup__textarea_empty');
+        reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
+    }
+
+    reviewName.addEventListener('input', (e) => {
+        e.preventDefault();
+        reviewName.classList.remove('popup__input_empty');
+        reviewName.parentNode.classList.remove('popup__input-wrap_empty');
+    });
+
+    reviewText.addEventListener('input', (e) => {
+        e.preventDefault();
+        reviewText.classList.remove('popup__textarea_empty');
+        reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
+    })
 
     addReview.addEventListener('click', (e) => {
         e.preventDefault();
@@ -88,6 +169,25 @@
     popupClose.addEventListener('click', (e) => {
         e.preventDefault();
         popupContainer.style.display = 'none';
-    })
+        reviewName.classList.remove('popup__input_empty');
+        reviewName.parentNode.classList.remove('popup__input-wrap_empty');
+        reviewText.classList.remove('popup__textarea_empty');
+        reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
+    });
+
+    popupContainer.addEventListener('click', (e) => {
+        e.preventDefault();
+        if  (e.target === popupContainer) {
+            popupContainer.style.display = 'none';
+            reviewName.classList.remove('popup__input_empty');
+            reviewName.parentNode.classList.remove('popup__input-wrap_empty');
+            reviewText.classList.remove('popup__textarea_empty');
+            reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
+        }
+        if (e.target === submitButton) {
+            submitForm();
+        }
+        console.log('click');
+    });
 
 })();

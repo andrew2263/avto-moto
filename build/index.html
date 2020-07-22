@@ -277,12 +277,18 @@
                 <span class="popup__close-1"></span>
                 <span class="popup__close-2"></span>
             </button>
-            <form action="" class="popup__form">
+            <form class="popup__form">
                 <div class="popup__wrap">
                     <div class="popup__column">
-                        <input type="text" name="review-name" id="review-name" class="popup__input" required="required" placeholder="Имя">
-                        <input type="text" name="review-advantages" id="review-advantages" class="popup__input" placeholder="Достоинства">
-                        <input type="text" name="review-minuses" id="review-minuses" class="popup__input" placeholder="Недостатки">
+                        <div class="popup__input-wrap popup__input-wrap_required">
+                            <input type="text" name="review-name" id="review-name" class="popup__input" required="required" placeholder="Имя">
+                        </div>
+                        <div class="popup__input-wrap">
+                            <input type="text" name="review-advantages" id="review-advantages" class="popup__input" placeholder="Достоинства">
+                        </div>
+                        <div class="popup__input-wrap">
+                            <input type="text" name="review-minuses" id="review-minuses" class="popup__input" placeholder="Недостатки">
+                        </div>
                     </div>
                     <div class="popup__column">
                         <div class="popup__rate">
@@ -295,7 +301,9 @@
                                 <li class="reviews__rate-item"></li>
                             </ul>
                         </div>
-                        <textarea name="review-text" id="review-text" placeholder="Комментарий" required="required" class="popup__textarea"></textarea>
+                        <div class="popup__textarea_wrap popup__textarea-wrap_required">
+                            <textarea name="review-text" id="review-text" placeholder="Комментарий" required="required" class="popup__textarea"></textarea>
+                        </div>
                     </div>
                 </div>
                 <input type="submit" name="review-submit" id="review-submit" class="popup__submit" value="Оставить отзыв">
