@@ -27,7 +27,7 @@
 
 .reviews__item {
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 18px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
     &:first-child {
@@ -39,13 +39,13 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 27px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .reviews__mark {
     display: flex;
     flex-direction: row;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
 
     &::before {
         color: #d12136;
@@ -61,11 +61,12 @@
     font-weight: 600;
     font-size: 15px;
     line-height: 20px;
+    margin-bottom: 3px;
     color: #000;
 }
 
 .reviews__mark p,
-.reviews__comment p {
+.reviews__comment-text {
     color: #000;
     font-size: 15px;
     line-height: 20px;
@@ -79,12 +80,12 @@
 
 .reviews__mark_minuses {
     &::before {
-        content: "-";
+        content: "–";
     }
 }
 
 .reviews__comment {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .reviews__rating {
@@ -103,6 +104,7 @@
     background-image: url('../img/star_gray.svg');
     background-repeat: no-repeat;
     margin-right: 5px;
+    transition: all .5s;
 
     &_red {
         background-image: url('../img/star_red.svg');

@@ -6,6 +6,7 @@
 .tabs__list {
     display: flex;
     margin-bottom: 30px;
+    margin-left: 10px;
 }
 
 .tabs__link {
@@ -44,6 +45,7 @@
 
 .tabs__panel {
     display: none;
+    margin-left: 10px;
 
     &_active {
         display: block;
@@ -59,20 +61,26 @@
     border-bottom: 1px solid #d7d9df;
     font-size: 16px;
     line-height: 22px;
-    padding-top: 20px;
-    padding-bottom: 8px;
-
-    &:first-child {
-        padding-top: 0;
-    }
 }
 
 .specs__spec {
     text-align: left;
+    padding-top: 19px;
+    padding-bottom: 8px;
+
+    &_first {
+        padding-top: 0;
+    }
 }
 
 .specs__value {
     text-align: right;
+    padding-top: 19px;
+    padding-bottom: 8px;
+
+    &_first {
+        padding-top: 0;
+    }
 }
 
 .faded {

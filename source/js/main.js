@@ -98,25 +98,45 @@
     let addReview = document.querySelector('.reviews__new');
     let popupContainer = document.querySelector('.popup-container');
     let popupClose = document.querySelector('.popup__close');
-    let form = document.querySelector('.popup__form');
     let reviewsList = document.querySelector('.reviews__list');
     let reviewsItem = document.querySelector('.reviews__item');
     let submitButton = document.getElementById('review-submit');
     let reviewName = document.getElementById('review-name');
     let reviewText = document.getElementById('review-text');
+    let form = popupContainer.querySelector('.popup__form');
+    let popupRateItems = form.querySelectorAll('.popup__rate-item');
+    let rated = false;
+    let rating = 0;
 
     let submitForm = () => {
         let newReviewsItem = reviewsItem.cloneNode(true);
-        let reviewHeading = newReviewsItem.querySelector('h3');
-        let reviewAdvantages = newReviewsItem.querySelector('.reviews__mark_advantages').querySelector('p');
-        let reviewMinuses = newReviewsItem.querySelector('.reviews__mark_minuses').querySelector('p');
-        let reviewComment = newReviewsItem.querySelector('.reviews__comment').querySelector('p');
+        let reviewsHeading = newReviewsItem.querySelector('h3');
+        let reviewsAdvantages = newReviewsItem.querySelector('.reviews__mark_advantages').querySelector('p');
+        let reviewsMinuses = newReviewsItem.querySelector('.reviews__mark_minuses').querySelector('p');
+        let reviewsComment = newReviewsItem.querySelector('.reviews__comment-text');
+        let reviewsRateItems = newReviewsItem.querySelectorAll('.reviews__rate-item');
+        let reviewsAdvice = newReviewsItem.querySelector('.reviews__advice');
         if (reviewName.value !== '' && reviewText.value !== '') {
-            reviewHeading.innerHTML = reviewName.value;
-            reviewAdvantages.innerHTML = document.getElementById('review-advantages').value;
-            reviewMinuses.innerHTML = document.getElementById('review-minuses').value;
-            reviewComment.innerHTML = reviewText.value;
+            reviewsHeading.textContent = reviewName.value;
+            reviewsAdvantages.textContent = document.getElementById('review-advantages').value;
+            reviewsMinuses.textContent = document.getElementById('review-minuses').value;
+            reviewsComment.innerHTML = '<p>' + reviewText.value.replace(/\r?\n/g, '<br/>') + '</p>';
             reviewsList.appendChild(newReviewsItem);
+            for (let i = 0; i < reviewsRateItems.length; i++) {
+                reviewsRateItems[i].classList.remove('reviews__rate-item_red');
+            }
+            for (let j = 0; j < rating; j++) {
+                reviewsRateItems[j].classList.add('reviews__rate-item_red');
+            }
+            if (rating > 3) {
+                reviewsAdvice.innerHTML = 'Советует';
+            }
+            if (rating === 3) {
+                reviewsAdvice.innerHTML = 'Ездить можно';
+            }
+            if (rating < 3) {
+                reviewsAdvice.innerHTML = 'Не советует';
+            }
             popupContainer.style.display = 'none';
             cleanForm();
             return;
@@ -147,6 +167,11 @@
         reviewName.parentNode.classList.remove('popup__input-wrap_empty');
         reviewText.classList.remove('popup__textarea_empty');
         reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
+        for (let i = 0; i < rating; i++) {
+            popupRateItems[i].classList.remove('popup__rate-item_red');
+        }
+        rating = 0;
+        rated = false;
     }
 
     reviewName.addEventListener('input', (e) => {
@@ -169,25 +194,62 @@
     popupClose.addEventListener('click', (e) => {
         e.preventDefault();
         popupContainer.style.display = 'none';
-        reviewName.classList.remove('popup__input_empty');
-        reviewName.parentNode.classList.remove('popup__input-wrap_empty');
-        reviewText.classList.remove('popup__textarea_empty');
-        reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
+        cleanForm();
     });
 
     popupContainer.addEventListener('click', (e) => {
         e.preventDefault();
         if  (e.target === popupContainer) {
             popupContainer.style.display = 'none';
-            reviewName.classList.remove('popup__input_empty');
-            reviewName.parentNode.classList.remove('popup__input-wrap_empty');
-            reviewText.classList.remove('popup__textarea_empty');
-            reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
+            cleanForm();
         }
         if (e.target === submitButton) {
             submitForm();
         }
-        console.log('click');
+        for (let i = 0; i < popupRateItems.length; i++) {
+            if (e.target === popupRateItems[i]) {
+                if (!rated) {
+                    for (let j = 0; j <= i; j++) {
+                        popupRateItems[j].classList.add('popup__rate-item_red');
+                        rating++;
+                    }
+                    rated = true;
+                    return;
+                }
+                if (rated) {
+                    for (let j = 0; j < popupRateItems.length; j++) {
+                        popupRateItems[j].classList.remove('popup__rate-item_red');
+                    }
+                    rating = 0;
+                    rated = false;
+                    return;
+                }
+            }
+        }
     });
 
+    for (let i = 0; i < popupRateItems.length; i++) {
+        popupRateItems[i].addEventListener('mouseover', (e) => {
+            e.preventDefault();
+            for (let j = 0; j <= i; j++) {
+                popupRateItems[j].classList.add('popup__rate-item_red');
+            }
+        });
+    }
+
+    for (let i = 0; i < popupRateItems.length; i++) {
+        popupRateItems[i].addEventListener('mouseout', (e) => {
+            e.preventDefault();
+            if (!rated) {
+                for (let j = 0; j <= i; j++) {
+                    popupRateItems[j].classList.remove('popup__rate-item_red');
+                }
+            }
+            if (rated && i >= rating) {
+                for (let j = rating; j <= i; j++) {
+                    popupRateItems[j].classList.remove('popup__rate-item_red');
+                }                
+            }
+        });
+    }
 })();

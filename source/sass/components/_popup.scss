@@ -116,6 +116,29 @@
     justify-content: space-between;
 }
 
+.popup__rate-list {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.popup__rate-item {
+    width: 27px;
+    height: 25px;
+    background-image: url('../img/star_gray_big.svg');
+    background-repeat: no-repeat;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: all .5s;
+
+    &_red {
+        background-image: url('../img/star_red_big.svg');
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
 .popup__rate p {
     display: inline-block;
     font-weight: 600;

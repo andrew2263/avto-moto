@@ -10,9 +10,11 @@
     <header class="header">
         <div class="container container_flex-sb">
             <div class="header__logo">
-                <a href="index.html" aria-label="На главную">
-                    <img src="img/logo.svg" alt="logo" width="55" height="55">
-                </a>
+                <div class="header__logo-wrap">
+                    <a href="index.html" aria-label="На главную">
+                        <img src="img/logo.svg" alt="logo" width="55" height="55">
+                    </a>
+                </div>
                 <div class="header__name">
                     <p class="header__name_auto">Avto</p>
                     <p class="header__name_moto">Moto</p>
@@ -86,7 +88,7 @@
                     </ul>
                     <div class="info__price">
                         <span class="price__new">2&nbsp;300&nbsp;000&nbsp;&#8381;</span>
-                        <span class="price__old">2&nbsp;400&nbsp;000&nbsp;&#8381;</span>
+                        <span class="price__old">2&nbsp;&nbsp;400&nbsp;000&nbsp;&#8381;</span>
                     </div>
                     <div class="info__wrapper">
                         <button type="button" class="info__button info__button_request">Оставить заявку</button>
@@ -114,8 +116,8 @@
                     <div class="tabs__panel tabs__panel_active faded in" id="specs">
                         <table class="specs">
                             <tr>
-                                <td class="specs__spec">Трансмиссия</td>
-                                <td class="specs__value">Роботизированная</td>
+                                <td class="specs__spec specs__spec_first">Трансмиссия</td>
+                                <td class="specs__value specs__value_first">Роботизированная</td>
                             </tr>
                             <tr>
                                 <td class="specs__spec">Мощность двигателя, л.с.</td>
@@ -162,10 +164,10 @@
                                     </div>
                                     <div class="reviews__comment">
                                         <h4>Комментарий</h4>
-                                        <p>
+                                        <div class="reviews__comment-text">
                                             Взяли по трейд-ин, на выгодных условиях у дилера. 
                                             Стильная внешка и крут по базовым характеристикам. Не думал, что пересяду на китайский автопром, но сейчас гоняю и понимаю, что полностью доволен.
-                                        </p>
+                                        </div>
                                     </div>
                                     <div class="reviews__rating">
                                         <ul class="reviews__rate-list">
@@ -293,12 +295,12 @@
                     <div class="popup__column">
                         <div class="popup__rate">
                             <p>Оцените товар:</p>
-                            <ul class="reviews__rate-list">
-                                <li class="reviews__rate-item"></li>
-                                <li class="reviews__rate-item"></li>
-                                <li class="reviews__rate-item"></li>
-                                <li class="reviews__rate-item"></li>
-                                <li class="reviews__rate-item"></li>
+                            <ul class="popup__rate-list">
+                                <li class="popup__rate-item"></li>
+                                <li class="popup__rate-item"></li>
+                                <li class="popup__rate-item"></li>
+                                <li class="popup__rate-item"></li>
+                                <li class="popup__rate-item"></li>
                             </ul>
                         </div>
                         <div class="popup__textarea_wrap popup__textarea-wrap_required">

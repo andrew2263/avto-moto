@@ -23,6 +23,13 @@ button {
     cursor: pointer;
 }
 
+img {
+    width: 100%;
+    border: 0;
+    position:relative;
+    vertical-align:bottom;
+}
+
 .container {
     position: relative;
     width: 1170px;
