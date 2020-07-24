@@ -100,12 +100,10 @@
     let popupClose = document.querySelector('.popup__close');
     let reviewsList = document.querySelector('.reviews__list');
     let reviewsItem = document.querySelector('.reviews__item');
-    let submitButton = document.getElementById('review-submit');
     let reviewName = document.getElementById('review-name');
     let reviewText = document.getElementById('review-text');
     let form = popupContainer.querySelector('.popup__form');
-    let popupRateItems = form.querySelectorAll('.popup__rate-item');
-    let rated = false;
+    let popupRateItems = form.querySelectorAll('.popup__star');
     let rating = 0;
 
     let submitForm = () => {
@@ -125,13 +123,19 @@
             for (let i = 0; i < reviewsRateItems.length; i++) {
                 reviewsRateItems[i].classList.remove('reviews__rate-item_red');
             }
+            for (let k = 0; k < popupRateItems.length; k++) {
+                if (popupRateItems[k].checked) {
+                    rating = popupRateItems[k].value;
+                    break;
+                }
+            }
             for (let j = 0; j < rating; j++) {
                 reviewsRateItems[j].classList.add('reviews__rate-item_red');
             }
             if (rating > 3) {
                 reviewsAdvice.innerHTML = 'Советует';
             }
-            if (rating === 3) {
+            if (rating == 3) {
                 reviewsAdvice.innerHTML = 'Ездить можно';
             }
             if (rating < 3) {
@@ -167,11 +171,12 @@
         reviewName.parentNode.classList.remove('popup__input-wrap_empty');
         reviewText.classList.remove('popup__textarea_empty');
         reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
-        for (let i = 0; i < rating; i++) {
-            popupRateItems[i].classList.remove('popup__rate-item_red');
+        for (let i = 0; i < popupRateItems.length; i++) {
+            if (popupRateItems[i].checked) {
+                popupRateItems[i].checked = false;
+            }
         }
         rating = 0;
-        rated = false;
     }
 
     reviewName.addEventListener('input', (e) => {
@@ -189,6 +194,7 @@
     addReview.addEventListener('click', (e) => {
         e.preventDefault();
         popupContainer.style.display = 'flex';
+        reviewName.focus();
     });
 
     popupClose.addEventListener('click', (e) => {
@@ -198,58 +204,21 @@
     });
 
     popupContainer.addEventListener('click', (e) => {
-        e.preventDefault();
         if  (e.target === popupContainer) {
             popupContainer.style.display = 'none';
             cleanForm();
         }
-        if (e.target === submitButton) {
-            submitForm();
-        }
-        for (let i = 0; i < popupRateItems.length; i++) {
-            if (e.target === popupRateItems[i]) {
-                if (!rated) {
-                    for (let j = 0; j <= i; j++) {
-                        popupRateItems[j].classList.add('popup__rate-item_red');
-                        rating++;
-                    }
-                    rated = true;
-                    return;
-                }
-                if (rated) {
-                    for (let j = 0; j < popupRateItems.length; j++) {
-                        popupRateItems[j].classList.remove('popup__rate-item_red');
-                    }
-                    rating = 0;
-                    rated = false;
-                    return;
-                }
-            }
-        }
     });
 
-    for (let i = 0; i < popupRateItems.length; i++) {
-        popupRateItems[i].addEventListener('mouseover', (e) => {
-            e.preventDefault();
-            for (let j = 0; j <= i; j++) {
-                popupRateItems[j].classList.add('popup__rate-item_red');
-            }
-        });
-    }
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitForm();
+    })
 
-    for (let i = 0; i < popupRateItems.length; i++) {
-        popupRateItems[i].addEventListener('mouseout', (e) => {
-            e.preventDefault();
-            if (!rated) {
-                for (let j = 0; j <= i; j++) {
-                    popupRateItems[j].classList.remove('popup__rate-item_red');
-                }
-            }
-            if (rated && i >= rating) {
-                for (let j = rating; j <= i; j++) {
-                    popupRateItems[j].classList.remove('popup__rate-item_red');
-                }                
-            }
-        });
-    }
+    document.addEventListener('keydown', (e) => {
+        if (popupContainer.style.display === 'flex' && e.code === 'Escape') {
+            popupContainer.style.display = 'none';
+            cleanForm();
+        }
+    })
 })();

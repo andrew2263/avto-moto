@@ -237,7 +237,7 @@
                                 <p><a href="mailto:info@avto-moto.ru">info@avto-moto.ru</a></p>
                             </div>
                             <div class="contacts__map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2823.9784923193183!2d30.322732205870896!3d59.96773960595467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696315bc4c7c80d%3A0x245ea6f5ab1210f6!2sArt%20Event%20Group!5e0!3m2!1sru!2sru!4v1595215495021!5m2!1sru!2sru" width="431" height="271" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2823.9784923193183!2d30.322732205870896!3d59.96773960595467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696315bc4c7c80d%3A0x245ea6f5ab1210f6!2sArt%20Event%20Group!5e0!3m2!1sru!2sru!4v1595215495021!5m2!1sru!2sru" width="431" height="271" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
                             </div>
                         </div>
                     </div>
@@ -283,7 +283,7 @@
                 <div class="popup__wrap">
                     <div class="popup__column">
                         <div class="popup__input-wrap popup__input-wrap_required">
-                            <input type="text" name="review-name" id="review-name" class="popup__input" required="required" placeholder="Имя">
+                            <input type="text" name="review-name" id="review-name" class="popup__input" placeholder="Имя">
                         </div>
                         <div class="popup__input-wrap">
                             <input type="text" name="review-advantages" id="review-advantages" class="popup__input" placeholder="Достоинства">
@@ -295,16 +295,63 @@
                     <div class="popup__column">
                         <div class="popup__rate">
                             <p>Оцените товар:</p>
-                            <ul class="popup__rate-list">
+                            <div class="popup__rating">
+                                <input type="radio" id="rating-5" value="5" class="popup__star" name="rating">
+                                <label for="rating-5">
+                                    <svg class="star star_gray" width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.5688 0L16.6151 9.52282H26.4734L18.4979 15.4082L21.5443 24.9311L13.5688 19.0456L5.59324 24.9311L8.63961 15.4082L0.664102 9.52282H10.5224L13.5688 0Z" fill="#BDBEC2" fill-opacity="0.7"/>
+                                    </svg>
+                                    <svg class="star star_red" width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.5688 0L16.6151 9.52282H26.4734L18.4979 15.4082L21.5443 24.9311L13.5688 19.0456L5.59324 24.9311L8.63961 15.4082L0.664102 9.52282H10.5224L13.5688 0Z" fill="#d12136"/>
+                                    </svg>                                        
+                                </label>
+                                <input type="radio" id="rating-4" value="4" class="popup__star" name="rating">
+                                <label for="rating-4">
+                                    <svg class="star star_gray" width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.5688 0L16.6151 9.52282H26.4734L18.4979 15.4082L21.5443 24.9311L13.5688 19.0456L5.59324 24.9311L8.63961 15.4082L0.664102 9.52282H10.5224L13.5688 0Z" fill="#BDBEC2" fill-opacity="0.7"/>
+                                    </svg>
+                                    <svg class="star star_red" width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.5688 0L16.6151 9.52282H26.4734L18.4979 15.4082L21.5443 24.9311L13.5688 19.0456L5.59324 24.9311L8.63961 15.4082L0.664102 9.52282H10.5224L13.5688 0Z" fill="#d12136"/>
+                                    </svg>                                        
+                                </label>
+                                <input type="radio" id="rating-3" value="3" class="popup__star" name="rating">
+                                <label for="rating-3">
+                                    <svg class="star star_gray" width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.5688 0L16.6151 9.52282H26.4734L18.4979 15.4082L21.5443 24.9311L13.5688 19.0456L5.59324 24.9311L8.63961 15.4082L0.664102 9.52282H10.5224L13.5688 0Z" fill="#BDBEC2" fill-opacity="0.7"/>
+                                    </svg>
+                                    <svg class="star star_red" width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.5688 0L16.6151 9.52282H26.4734L18.4979 15.4082L21.5443 24.9311L13.5688 19.0456L5.59324 24.9311L8.63961 15.4082L0.664102 9.52282H10.5224L13.5688 0Z" fill="#d12136"/>
+                                    </svg>                                        
+                                </label>
+                                <input type="radio" id="rating-2" value="2" class="popup__star" name="rating">
+                                <label for="rating-2">
+                                    <svg class="star star_gray" width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.5688 0L16.6151 9.52282H26.4734L18.4979 15.4082L21.5443 24.9311L13.5688 19.0456L5.59324 24.9311L8.63961 15.4082L0.664102 9.52282H10.5224L13.5688 0Z" fill="#BDBEC2" fill-opacity="0.7"/>
+                                    </svg>
+                                    <svg class="star star_red" width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.5688 0L16.6151 9.52282H26.4734L18.4979 15.4082L21.5443 24.9311L13.5688 19.0456L5.59324 24.9311L8.63961 15.4082L0.664102 9.52282H10.5224L13.5688 0Z" fill="#d12136"/>
+                                    </svg>                                        
+                                </label>
+                                <input type="radio" id="rating-1" value="1" class="popup__star" name="rating">
+                                <label for="rating-1">
+                                    <svg class="star star_gray" width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.5688 0L16.6151 9.52282H26.4734L18.4979 15.4082L21.5443 24.9311L13.5688 19.0456L5.59324 24.9311L8.63961 15.4082L0.664102 9.52282H10.5224L13.5688 0Z" fill="#BDBEC2" fill-opacity="0.7"/>
+                                    </svg>
+                                    <svg class="star star_red" width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.5688 0L16.6151 9.52282H26.4734L18.4979 15.4082L21.5443 24.9311L13.5688 19.0456L5.59324 24.9311L8.63961 15.4082L0.664102 9.52282H10.5224L13.5688 0Z" fill="#d12136"/>
+                                    </svg>                                        
+                                </label>
+                            </div>
+                            <!--ul class="popup__rate-list">
                                 <li class="popup__rate-item"></li>
                                 <li class="popup__rate-item"></li>
                                 <li class="popup__rate-item"></li>
                                 <li class="popup__rate-item"></li>
                                 <li class="popup__rate-item"></li>
-                            </ul>
+                            </ul-->
                         </div>
                         <div class="popup__textarea_wrap popup__textarea-wrap_required">
-                            <textarea name="review-text" id="review-text" placeholder="Комментарий" required="required" class="popup__textarea"></textarea>
+                            <textarea name="review-text" id="review-text" placeholder="Комментарий" class="popup__textarea"></textarea>
                         </div>
                     </div>
                 </div>
@@ -312,6 +359,27 @@
             </form>
         </div>
     </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDovoYLFNAzmt90C38q5g6LrZ4q-5lZ8SY&callback=initMap"></script>
     <script src="js/main.js"></script>
+    <script>
+        let map;
+        let marker;
+
+        function initMap() {
+            let address = { lat: 59.968313, lng: 30.317233 };
+
+            map = new google.maps.Map(document.querySelector(".contacts__map"), {
+                center: address,
+                zoom: 15
+            });
+
+            marker = new google.maps.Marker({
+                position: address,
+                map: map
+            });
+
+            marker.setMap(map);
+        }
+    </script>
 </body>
 </html>
