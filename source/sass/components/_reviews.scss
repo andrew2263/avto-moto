@@ -1,151 +1,151 @@
 .reviews {
-    position: relative;
+  position: relative;
 }
 
 .reviews__new {
-    position: absolute;
-    right: 0;
-    top: 0;
-    border: 1px solid #d12136;
-    background-color: transparent;
-    height: 52px;
-    width: 189px;
-    color: #d12136;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 19px;
-    letter-spacing: 0.12em;
-    transition: all .5s;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 1px solid #d12136;
+  background-color: transparent;
+  height: 52px;
+  width: 189px;
+  color: #d12136;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.12em;
+  transition: all 0.5s;
 
-    &:hover {
-        background-color: #d12136;
-        color: #fff;
-        transition: all .5s;
-    }
+  &:hover {
+    background-color: #d12136;
+    color: #ffffff;
+    transition: all 0.5s;
+  }
 }
 
 .reviews__item {
-    padding-top: 20px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
-    &:first-child {
-        padding-top: 0;
-    }
+  &:first-child {
+    padding-top: 0;
+  }
 }
 
 .reviews__item h3 {
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 27px;
-    margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  margin-bottom: 12px;
 }
 
 .reviews__mark {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
 
-    &::before {
-        color: #d12136;
-        font-weight: 600;
-        font-size: 15px;
-        line-height: 20px;
-        margin-right: 10px;
-    }
+  &::before {
+    color: #d12136;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    margin-right: 10px;
+  }
 }
 
 .reviews__mark h4,
 .reviews__comment h4 {
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 20px;
-    margin-bottom: 3px;
-    color: #000;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  margin-bottom: 3px;
+  color: #000000;
 }
 
 .reviews__mark p,
 .reviews__comment-text {
-    color: #000;
-    font-size: 15px;
-    line-height: 20px;
+  color: #000000;
+  font-size: 15px;
+  line-height: 20px;
 }
 
 .reviews__mark_advantages {
-    &::before {
-        content: "+";
-    }
+  &::before {
+    content: "+";
+  }
 }
 
 .reviews__mark_minuses {
-    &::before {
-        content: "–";
-    }
+  &::before {
+    content: "–";
+  }
 }
 
 .reviews__comment {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .reviews__rating {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 .reviews__rate-list {
-    display: inline-flex;
-    flex-direction: row;
-    margin-right: 20px;
+  display: inline-flex;
+  flex-direction: row;
+  margin-right: 20px;
 }
 
 .reviews__rate-item {
-    width: 17px;
-    height: 17px;
-    background-image: url('../img/star_gray.svg');
-    background-repeat: no-repeat;
-    margin-right: 5px;
-    transition: all .5s;
+  width: 17px;
+  height: 17px;
+  background-image: url("../img/star_gray.svg");
+  background-repeat: no-repeat;
+  margin-right: 5px;
+  transition: all 0.5s;
 
-    &_red {
-        background-image: url('../img/star_red.svg');
-    }
+  &_red {
+    background-image: url("../img/star_red.svg");
+  }
 
-    &:last-child {
-        margin-right: 0;
-    }
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .reviews__advice {
-    display: inline-block;
-    color: #d12136;
-    font-size: 15px;
-    line-height: 20px;
+  display: inline-block;
+  color: #d12136;
+  font-size: 15px;
+  line-height: 20px;
 }
 
 .reviews__footer {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .reviews__time {
-    display: inline-block;
-    font-style: normal;
-    font-weight: 500;
-    color: #000;
-    opacity: 0.4;
-    font-size: 14px;
-    line-height: 19px;
-    margin-right: 25px;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 500;
+  color: #000000;
+  opacity: 0.4;
+  font-size: 14px;
+  line-height: 19px;
+  margin-right: 25px;
 }
 
 .reviews__answer-button {
-    border: none;
-    background-color: transparent;
-    color: #d12136;
-    font-size: 16px;
-    line-height: 22px;
+  border: none;
+  background-color: transparent;
+  color: #d12136;
+  font-size: 16px;
+  line-height: 22px;
 
-    &:hover {
-        text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
 }

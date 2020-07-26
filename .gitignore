@@ -12,4 +12,5 @@ npm-debug.*
 source/css/*.css
 source/css/*.map
 layout/
+js_es6/
 Thumbs.db

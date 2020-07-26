@@ -1,23 +1,26 @@
 @font-face {
-    font-family: 'Open Sans';
-    src: url('../fonts/OpenSans-Regular.woff');
-    font-weight: 500;
-    font-display: swap;
-    font-style: normal;
+  font-family: "Open Sans";
+  src: url("../fonts/open-sans-v17-latin_cyrillic-regular.woff2");
+  src: url("../fonts/open-sans-v17-latin_cyrillic-regular.woff");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Open Sans';
-    src: url('../fonts/OpenSans-SemiBold.woff');
-    font-weight: 600;
-    font-display: swap;
-    font-style: normal;
+  font-family: "Open Sans";
+  src: url("../fonts/open-sans-v17-latin_cyrillic-600.woff2");
+  src: url("../fonts/open-sans-v17-latin_cyrillic-600.woff");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Open Sans';
-    src: url('../fonts/OpenSans-Bold.woff');
-    font-weight: 700;
-    font-display: swap;
-    font-style: normal;
+  font-family: "Open Sans";
+  src: url("../fonts/open-sans-v17-latin_cyrillic-700.woff2");
+  src: url("../fonts/open-sans-v17-latin_cyrillic-700.woff");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
 }

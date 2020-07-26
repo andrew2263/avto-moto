@@ -1,224 +1,224 @@
-(() => {
-    let buttonPrev = document.querySelector('.images__button_left');
-    let buttonNext = document.querySelector('.images__button_right');
-    let previewsItems = document.querySelectorAll('.previews__item');
-    let mainImage = document.querySelector('.images__main').querySelector('img');
+'use strict';
+(function () {
+  var buttonPrev = document.querySelector('.images__button_left');
+  var buttonNext = document.querySelector('.images__button_right');
+  var previewsItems = document.querySelectorAll('.previews__item');
+  var mainImage = document.querySelector('.images__main').querySelector('img');
 
-    let getActiveItemNumber = (items, activeClassName) => {
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].classList.contains(activeClassName)) {
-                return i;
-            }
-        }
+  var getActiveItemNumber = function (items, activeClassName) {
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].classList.contains(activeClassName)) {
+        return i;
+      }
     }
+    return 1;
+  };
 
-    buttonNext.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (buttonNext.disabled === false) {
-            if (buttonPrev.disabled === true) {
-                buttonPrev.classList.remove('images__button_disabled');
-                buttonPrev.disabled = false;
-            }
-            let activeItemNumber = getActiveItemNumber(previewsItems, 'previews__item_active');
-            if (activeItemNumber <= previewsItems.length - 2) {
-                previewsItems[activeItemNumber].classList.remove('previews__item_active');
-                previewsItems[activeItemNumber + 1].classList.add('previews__item_active');
-                mainImage.src = previewsItems[activeItemNumber + 1].dataset.image;
-            }
-            if (activeItemNumber === previewsItems.length - 2) {
-                buttonNext.disabled = true;
-                buttonNext.classList.add('images__button_disabled');
-            }
-        }
+  buttonNext.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (buttonNext.disabled === false) {
+      if (buttonPrev.disabled === true) {
+        buttonPrev.classList.remove('images__button_disabled');
+        buttonPrev.disabled = false;
+      }
+      var activeItemNumber = getActiveItemNumber(previewsItems, 'previews__item_active');
+      if (activeItemNumber <= previewsItems.length - 2) {
+        previewsItems[activeItemNumber].classList.remove('previews__item_active');
+        previewsItems[activeItemNumber + 1].classList.add('previews__item_active');
+        mainImage.src = previewsItems[activeItemNumber + 1].dataset.image;
+      }
+      if (activeItemNumber === previewsItems.length - 2) {
+        buttonNext.disabled = true;
+        buttonNext.classList.add('images__button_disabled');
+      }
+    }
+  });
+
+  buttonPrev.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (buttonPrev.disabled === false) {
+      if (buttonNext.disabled === true) {
+        buttonNext.classList.remove('images__button_disabled');
+        buttonNext.disabled = false;
+      }
+      var activeItemNumber = getActiveItemNumber(previewsItems, 'previews__item_active');
+      if (activeItemNumber >= 1) {
+        previewsItems[activeItemNumber].classList.remove('previews__item_active');
+        previewsItems[activeItemNumber - 1].classList.add('previews__item_active');
+        mainImage.src = previewsItems[activeItemNumber - 1].dataset.image;
+      }
+      if (activeItemNumber === 1) {
+        buttonPrev.disabled = true;
+        buttonPrev.classList.add('images__button_disabled');
+      }
+    }
+  });
+
+  var tabsLinks = document.querySelectorAll('.tabs__link');
+  var tabsItems = document.querySelectorAll('.tabs__item');
+
+  for (var i = 0; i < tabsLinks.length; i++) {
+    tabsLinks[i].addEventListener('click', function (e) {
+      e.preventDefault();
+      var hrefElement = document.querySelector(e.target.getAttribute('href'));
+      var tabsPanels = document.querySelectorAll('.tabs__panel');
+      for (var j = 0; j < tabsPanels.length; j++) {
+        tabsPanels[j].classList.remove('tabs__panel_active');
+        tabsPanels[j].classList.remove('in');
+      }
+      hrefElement.classList.add('tabs__panel_active');
+      setTimeout(function () {
+        hrefElement.classList.add('in');
+      }, 150);
+      for (var k = 0; k < tabsItems.length; k++) {
+        tabsItems[k].classList.remove('tabs__item_active');
+        tabsItems[k].classList.remove('tabs__item_hover');
+      }
+      e.target.parentNode.classList.add('tabs__item_active');
+    });
+  }
+
+  for (var y = 0; y < tabsLinks.length; y++) {
+    tabsLinks[y].addEventListener('mouseover', function (e) {
+      e.preventDefault();
+      if (!e.target.parentNode.classList.contains('tabs__item_active')) {
+        e.target.parentNode.classList.add('tabs__item_hover');
+      }
     });
 
-    buttonPrev.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (buttonPrev.disabled === false) {
-            if (buttonNext.disabled === true) {
-                buttonNext.classList.remove('images__button_disabled');
-                buttonNext.disabled = false;
-            }
-            let activeItemNumber = getActiveItemNumber(previewsItems, 'previews__item_active');
-            if (activeItemNumber >= 1) {
-                previewsItems[activeItemNumber].classList.remove('previews__item_active');
-                previewsItems[activeItemNumber - 1].classList.add('previews__item_active');
-                mainImage.src = previewsItems[activeItemNumber - 1].dataset.image;
-            }
-            if (activeItemNumber === 1) {
-                buttonPrev.disabled = true;
-                buttonPrev.classList.add('images__button_disabled');
-            }
-        }
+    tabsLinks[y].addEventListener('mouseout', function (e) {
+      e.preventDefault();
+      if (!e.target.parentNode.classList.contains('tabs__item_active')) {
+        e.target.parentNode.classList.remove('tabs__item_hover');
+      }
     });
+  }
 
-    let tabsLinks = document.querySelectorAll('.tabs__link');
-    let tabsItems = document.querySelectorAll('.tabs__item');
+  var addReview = document.querySelector('.reviews__new');
+  var popupContainer = document.querySelector('.popup-container');
+  var popupClose = document.querySelector('.popup__close');
+  var reviewsList = document.querySelector('.reviews__list');
+  var reviewsItem = document.querySelector('.reviews__item');
+  var reviewName = document.getElementById('review-name');
+  var reviewText = document.getElementById('review-text');
+  var form = popupContainer.querySelector('.popup__form');
+  var popupRateItems = form.querySelectorAll('.popup__star');
+  var rating = 0;
 
-    for (let tabsLink of tabsLinks) {
-        tabsLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            let hrefElement = document.querySelector(tabsLink.getAttribute('href'));
-            for (let tabsPanel of hrefElement.parentNode.children) {
-                tabsPanel.classList.remove('tabs__panel_active');
-                setTimeout(() => {
-                    tabsPanel.classList.remove('in');
-                }, 150);
-            }
-            hrefElement.classList.add('tabs__panel_active');
-            setTimeout(() => {
-               hrefElement.classList.add('in'); 
-            }, 150);
-            for (let tabsItem of tabsItems) {
-                tabsItem.classList.remove('tabs__item_active');
-                tabsItem.classList.remove('tabs__item_hover');
-            }
-            tabsLink.parentNode.classList.add('tabs__item_active');
-        });
-    }
-
-    for (let tabsLink of tabsLinks) {
-            tabsLink.addEventListener('mouseover', (e) => {
-                e.preventDefault();
-                if (!tabsLink.parentNode.classList.contains('tabs__item_active')) {
-                    tabsLink.parentNode.classList.add('tabs__item_hover');
-                }
-            });
-
-            tabsLink.addEventListener('mouseout', (e) => {
-                e.preventDefault();
-                if (!tabsLink.parentNode.classList.contains('tabs__item_active')) {
-                    tabsLink.parentNode.classList.remove('tabs__item_hover');
-                }
-            });
-
-        
-    }
-
-    let addReview = document.querySelector('.reviews__new');
-    let popupContainer = document.querySelector('.popup-container');
-    let popupClose = document.querySelector('.popup__close');
-    let reviewsList = document.querySelector('.reviews__list');
-    let reviewsItem = document.querySelector('.reviews__item');
-    let reviewName = document.getElementById('review-name');
-    let reviewText = document.getElementById('review-text');
-    let form = popupContainer.querySelector('.popup__form');
-    let popupRateItems = form.querySelectorAll('.popup__star');
-    let rating = 0;
-
-    let submitForm = () => {
-        let newReviewsItem = reviewsItem.cloneNode(true);
-        let reviewsHeading = newReviewsItem.querySelector('h3');
-        let reviewsAdvantages = newReviewsItem.querySelector('.reviews__mark_advantages').querySelector('p');
-        let reviewsMinuses = newReviewsItem.querySelector('.reviews__mark_minuses').querySelector('p');
-        let reviewsComment = newReviewsItem.querySelector('.reviews__comment-text');
-        let reviewsRateItems = newReviewsItem.querySelectorAll('.reviews__rate-item');
-        let reviewsAdvice = newReviewsItem.querySelector('.reviews__advice');
-        if (reviewName.value !== '' && reviewText.value !== '') {
-            reviewsHeading.textContent = reviewName.value;
-            reviewsAdvantages.textContent = document.getElementById('review-advantages').value;
-            reviewsMinuses.textContent = document.getElementById('review-minuses').value;
-            reviewsComment.innerHTML = '<p>' + reviewText.value.replace(/\r?\n/g, '<br/>') + '</p>';
-            reviewsList.appendChild(newReviewsItem);
-            for (let i = 0; i < reviewsRateItems.length; i++) {
-                reviewsRateItems[i].classList.remove('reviews__rate-item_red');
-            }
-            for (let k = 0; k < popupRateItems.length; k++) {
-                if (popupRateItems[k].checked) {
-                    rating = popupRateItems[k].value;
-                    break;
-                }
-            }
-            for (let j = 0; j < rating; j++) {
-                reviewsRateItems[j].classList.add('reviews__rate-item_red');
-            }
-            if (rating > 3) {
-                reviewsAdvice.innerHTML = 'Советует';
-            }
-            if (rating == 3) {
-                reviewsAdvice.innerHTML = 'Ездить можно';
-            }
-            if (rating < 3) {
-                reviewsAdvice.innerHTML = 'Не советует';
-            }
-            popupContainer.style.display = 'none';
-            cleanForm();
-            return;
+  var submitForm = function () {
+    var newReviewsItem = reviewsItem.cloneNode(true);
+    var reviewsHeading = newReviewsItem.querySelector('h3');
+    var reviewsAdvantages = newReviewsItem.querySelector('.reviews__mark_advantages').querySelector('p');
+    var reviewsMinuses = newReviewsItem.querySelector('.reviews__mark_minuses').querySelector('p');
+    var reviewsComment = newReviewsItem.querySelector('.reviews__comment-text');
+    var reviewsRateItems = newReviewsItem.querySelectorAll('.reviews__rate-item');
+    var reviewsAdvice = newReviewsItem.querySelector('.reviews__advice');
+    if (reviewName.value !== '' && reviewText.value !== '') {
+      reviewsHeading.textContent = reviewName.value;
+      reviewsAdvantages.textContent = document.getElementById('review-advantages').value;
+      reviewsMinuses.textContent = document.getElementById('review-minuses').value;
+      reviewsComment.innerHTML = '<p>' + reviewText.value.replace(/\r?\n/g, '<br/>') + '</p>';
+      reviewsList.appendChild(newReviewsItem);
+      for (var n = 0; n < reviewsRateItems.length; n++) {
+        reviewsRateItems[n].classList.remove('reviews__rate-item_red');
+      }
+      for (var m = 0; m < popupRateItems.length; m++) {
+        if (popupRateItems[m].checked) {
+          rating = popupRateItems[m].value;
+          break;
         }
-        if (reviewName.value === '') {
-            if (reviewText.value !== '') {
-                reviewText.classList.remove('popup__textarea_empty');
-                reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
-            }
-            reviewName.classList.add('popup__input_empty');
-            reviewName.parentNode.classList.add('popup__input-wrap_empty');
-        }
-        if (reviewText.value === '') {
-            if (reviewName.value !== '') {
-                reviewName.classList.remove('popup__input_empty');
-                reviewName.parentNode.classList.remove('popup__input-wrap_empty');
-            }
-            reviewText.classList.add('popup__textarea_empty');
-            reviewText.parentNode.classList.add('popup__textarea-wrap_empty');
-        }
+      }
+      for (var j = 0; j < rating; j++) {
+        reviewsRateItems[j].classList.add('reviews__rate-item_red');
+      }
+      if (Number(rating) > 3) {
+        reviewsAdvice.innerHTML = 'Советует';
+      }
+      if (Number(rating) === 3) {
+        reviewsAdvice.innerHTML = 'Ездить можно';
+      }
+      if (Number(rating) < 3) {
+        reviewsAdvice.innerHTML = 'Не советует';
+      }
+      popupContainer.style.display = 'none';
+      cleanForm();
+      return;
     }
-
-    let cleanForm = () => {
-        reviewName.value = '';
-        document.getElementById('review-advantages').value = '';
-        document.getElementById('review-minuses').value = '';
-        reviewText.value = '';reviewName.classList.remove('popup__input_empty');
-        reviewName.parentNode.classList.remove('popup__input-wrap_empty');
+    if (reviewName.value === '') {
+      if (reviewText.value !== '') {
         reviewText.classList.remove('popup__textarea_empty');
         reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
-        for (let i = 0; i < popupRateItems.length; i++) {
-            if (popupRateItems[i].checked) {
-                popupRateItems[i].checked = false;
-            }
-        }
-        rating = 0;
+      }
+      reviewName.classList.add('popup__input_empty');
+      reviewName.parentNode.classList.add('popup__input-wrap_empty');
     }
-
-    reviewName.addEventListener('input', (e) => {
-        e.preventDefault();
+    if (reviewText.value === '') {
+      if (reviewName.value !== '') {
         reviewName.classList.remove('popup__input_empty');
         reviewName.parentNode.classList.remove('popup__input-wrap_empty');
-    });
+      }
+      reviewText.classList.add('popup__textarea_empty');
+      reviewText.parentNode.classList.add('popup__textarea-wrap_empty');
+    }
+  };
 
-    reviewText.addEventListener('input', (e) => {
-        e.preventDefault();
-        reviewText.classList.remove('popup__textarea_empty');
-        reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
-    })
+  var cleanForm = function () {
+    reviewName.value = '';
+    document.getElementById('review-advantages').value = '';
+    document.getElementById('review-minuses').value = '';
+    reviewText.value = '';
+    reviewName.classList.remove('popup__input_empty');
+    reviewName.parentNode.classList.remove('popup__input-wrap_empty');
+    reviewText.classList.remove('popup__textarea_empty');
+    reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
+    for (var a = 0; a < popupRateItems.length; a++) {
+      if (popupRateItems[a].checked) {
+        popupRateItems[a].checked = false;
+      }
+    }
+    rating = 0;
+  };
 
-    addReview.addEventListener('click', (e) => {
-        e.preventDefault();
-        popupContainer.style.display = 'flex';
-        reviewName.focus();
-    });
+  reviewName.addEventListener('input', function (e) {
+    e.preventDefault();
+    reviewName.classList.remove('popup__input_empty');
+    reviewName.parentNode.classList.remove('popup__input-wrap_empty');
+  });
 
-    popupClose.addEventListener('click', (e) => {
-        e.preventDefault();
-        popupContainer.style.display = 'none';
-        cleanForm();
-    });
+  reviewText.addEventListener('input', function (e) {
+    e.preventDefault();
+    reviewText.classList.remove('popup__textarea_empty');
+    reviewText.parentNode.classList.remove('popup__textarea-wrap_empty');
+  });
 
-    popupContainer.addEventListener('click', (e) => {
-        if  (e.target === popupContainer) {
-            popupContainer.style.display = 'none';
-            cleanForm();
-        }
-    });
+  addReview.addEventListener('click', function (e) {
+    e.preventDefault();
+    popupContainer.style.display = 'flex';
+    reviewName.focus();
+  });
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        submitForm();
-    })
+  popupClose.addEventListener('click', function (e) {
+    e.preventDefault();
+    popupContainer.style.display = 'none';
+    cleanForm();
+  });
 
-    document.addEventListener('keydown', (e) => {
-        if (popupContainer.style.display === 'flex' && e.code === 'Escape') {
-            popupContainer.style.display = 'none';
-            cleanForm();
-        }
-    })
+  popupContainer.addEventListener('click', function (e) {
+    if (e.target === popupContainer) {
+      popupContainer.style.display = 'none';
+      cleanForm();
+    }
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    submitForm();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (popupContainer.style.display === 'flex' && e.code === 'Escape') {
+      popupContainer.style.display = 'none';
+      cleanForm();
+    }
+  });
 })();

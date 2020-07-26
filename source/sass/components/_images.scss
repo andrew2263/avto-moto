@@ -1,73 +1,73 @@
 .images {
-    width: 600px;
-    margin-right: 54px;
-    padding-top: 15px;
+  width: 600px;
+  margin-right: 54px;
+  padding-top: 15px;
 }
 
 .images__main {
-    position: relative;
-    margin-bottom: 40px;
+  position: relative;
+  margin-bottom: 40px;
 }
 
 .images__new {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 122px;
-    height: 30px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    background-color: #d12136;
-    font-size: 10px;
-    line-height: 14px;
-    color: #fff;
-    letter-spacing: 0.07em;
-    font-weight: 600;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 122px;
+  height: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  background-color: #d12136;
+  font-size: 10px;
+  line-height: 14px;
+  color: #ffffff;
+  letter-spacing: 0.07em;
+  font-weight: 600;
 }
 
 .images__previews {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .images__button {
-    border: 1px solid #d7d9df;
-    background-color: transparent;
-    width: 52px;
-    height: 52px;
-    border-radius: 26px;
-    background-repeat: no-repeat;
+  border: 1px solid #d7d9df;
+  background-color: transparent;
+  width: 52px;
+  height: 52px;
+  border-radius: 26px;
+  background-repeat: no-repeat;
 
-    &_left {
-        background-image: url('../img/arrow-left.svg');
-        background-position: center;
-    }
+  &_left {
+    background-image: url("../img/arrow-left.svg");
+    background-position: center;
+  }
 
-    &_right {
-        background-image: url('../img/arrow-right.svg');
-        background-position: center;
-    }
+  &_right {
+    background-image: url("../img/arrow-right.svg");
+    background-position: center;
+  }
 
-    &_disabled {
-        opacity: 0.5;
-    }
+  &_disabled {
+    opacity: 0.5;
+  }
 }
 
 .previews__list {
-    display: flex;
+  display: flex;
 }
 
 .previews__item {
-    margin-right: 25px;
+  margin-right: 25px;
 
-    &:last-child {
-        margin-right: 0;
-    }
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .swiper-wrapper {
-    width: 434px;
+  width: 434px;
 }
