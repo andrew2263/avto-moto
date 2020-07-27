@@ -26,6 +26,7 @@
         previewsItems[activeItemNumber].classList.remove('previews__item_active');
         previewsItems[activeItemNumber + 1].classList.add('previews__item_active');
         mainImage.src = previewsItems[activeItemNumber + 1].dataset.image;
+        mainImage.srcset = previewsItems[activeItemNumber + 1].dataset.srcset;
       }
       if (activeItemNumber === previewsItems.length - 2) {
         buttonNext.disabled = true;
@@ -46,6 +47,7 @@
         previewsItems[activeItemNumber].classList.remove('previews__item_active');
         previewsItems[activeItemNumber - 1].classList.add('previews__item_active');
         mainImage.src = previewsItems[activeItemNumber - 1].dataset.image;
+        mainImage.srcset = previewsItems[activeItemNumber - 1].dataset.srcset;
       }
       if (activeItemNumber === 1) {
         buttonPrev.disabled = true;
