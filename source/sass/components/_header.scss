@@ -30,9 +30,14 @@
   }
 }
 
+.header__nav {
+  max-width: 950px;
+}
+
 .header__menu {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
 }
 

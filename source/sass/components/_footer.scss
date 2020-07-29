@@ -5,7 +5,15 @@
 
 .footer__list {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer__item {
+  margin-right: 66px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .footer__link {

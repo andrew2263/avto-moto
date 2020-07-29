@@ -1,9 +1,17 @@
 'use strict';
 (function () {
-  var buttonPrev = document.querySelector('.images__button_left');
-  var buttonNext = document.querySelector('.images__button_right');
+  var buttonPrev = document.querySelector('.previews__button_left');
+  var buttonNext = document.querySelector('.previews__button_right');
   var previewsItems = document.querySelectorAll('.previews__item');
   var mainImage = document.querySelector('.images__main').querySelector('img');
+  var myStorage = localStorage;
+  var reviewsList = document.querySelector('.reviews__list');
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (myStorage.getItem('reviews__list')) {
+      reviewsList.innerHTML = myStorage.getItem('reviews__list');
+    }
+  });
 
   var getActiveItemNumber = function (items, activeClassName) {
     for (var i = 0; i < items.length; i++) {
@@ -18,7 +26,7 @@
     e.preventDefault();
     if (buttonNext.disabled === false) {
       if (buttonPrev.disabled === true) {
-        buttonPrev.classList.remove('images__button_disabled');
+        buttonPrev.classList.remove('previews__button_disabled');
         buttonPrev.disabled = false;
       }
       var activeItemNumber = getActiveItemNumber(previewsItems, 'previews__item_active');
@@ -30,7 +38,7 @@
       }
       if (activeItemNumber === previewsItems.length - 2) {
         buttonNext.disabled = true;
-        buttonNext.classList.add('images__button_disabled');
+        buttonNext.classList.add('previews__button_disabled');
       }
     }
   });
@@ -39,7 +47,7 @@
     e.preventDefault();
     if (buttonPrev.disabled === false) {
       if (buttonNext.disabled === true) {
-        buttonNext.classList.remove('images__button_disabled');
+        buttonNext.classList.remove('previews__button_disabled');
         buttonNext.disabled = false;
       }
       var activeItemNumber = getActiveItemNumber(previewsItems, 'previews__item_active');
@@ -51,7 +59,7 @@
       }
       if (activeItemNumber === 1) {
         buttonPrev.disabled = true;
-        buttonPrev.classList.add('images__button_disabled');
+        buttonPrev.classList.add('previews__button_disabled');
       }
     }
   });
@@ -99,7 +107,6 @@
   var addReview = document.querySelector('.reviews__new');
   var popupContainer = document.querySelector('.popup-container');
   var popupClose = document.querySelector('.popup__close');
-  var reviewsList = document.querySelector('.reviews__list');
   var reviewsItem = document.querySelector('.reviews__item');
   var reviewName = document.getElementById('review-name');
   var reviewText = document.getElementById('review-text');
@@ -120,7 +127,6 @@
       reviewsAdvantages.textContent = document.getElementById('review-advantages').value;
       reviewsMinuses.textContent = document.getElementById('review-minuses').value;
       reviewsComment.innerHTML = '<p>' + reviewText.value.replace(/\r?\n/g, '<br/>') + '</p>';
-      reviewsList.appendChild(newReviewsItem);
       for (var n = 0; n < reviewsRateItems.length; n++) {
         reviewsRateItems[n].classList.remove('reviews__rate-item_red');
       }
@@ -142,6 +148,8 @@
       if (Number(rating) < 3) {
         reviewsAdvice.innerHTML = 'Не советует';
       }
+      reviewsList.appendChild(newReviewsItem);
+      myStorage.setItem('reviews__list', reviewsList.innerHTML);
       popupContainer.style.display = 'none';
       cleanForm();
       return;

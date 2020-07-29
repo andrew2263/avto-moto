@@ -49,8 +49,8 @@
                         <img src="img/car_big.jpg" srcset="img/car_big@1.5x.jpg 1.5x, img/car_big@2x.jpg 2x" alt="Автомобиль снаружи" width="600" height="375">
                         <div class="images__new">New model</div>
                     </div>
-                    <div class="images__previews">
-                        <button type="button" class="images__button images__button_left images__button_disabled" aria-label="Назад" disabled>
+                    <div class="previews">
+                        <button type="button" class="previews__button previews__button_left previews__button_disabled" aria-label="Назад" disabled>
                         </button>
                         <ul class="previews__list">
                             <li class="previews__item previews__item_active" data-image="img/car_big.jpg" data-srcset="img/car_big@1.5x.jpg 1.5x, img/car_big@2x.jpg 2x">
@@ -66,7 +66,7 @@
                                 <img src="img/car_speed_small.jpg" srcset="img/car_speed_small@1.5x.jpg 1.5x, img/car_speed_small@2x.jpg 2x" alt="Приборная панель автомобиля" width="128" height="80">
                             </li>
                         </ul>
-                        <button type="button" class="images__button images__button_right" aria-label="Вперед">
+                        <button type="button" class="previews__button previews__button_right" aria-label="Вперед">
                         </button>
                     </div>
                 </article>
@@ -90,9 +90,9 @@
                             <p class="info__descr">1.4 л</p>
                         </li>
                     </ul>
-                    <div class="info__price">
-                        <span class="price__new">2&nbsp;300&nbsp;000&nbsp;&#8381;</span>
-                        <span class="price__old">2&nbsp;&nbsp;400&nbsp;000&nbsp;&#8381;</span>
+                    <div class="info__prices">
+                        <span class="info__price_new">2&nbsp;300&nbsp;000&nbsp;&#8381;</span>
+                        <span class="info__price_old">2&nbsp;&nbsp;400&nbsp;000&nbsp;&#8381;</span>
                     </div>
                     <div class="info__wrapper">
                         <button type="button" class="info__button info__button_request">Оставить заявку</button>
@@ -184,7 +184,7 @@
                                         <div class="reviews__advice">Советует</div>
                                     </div>
                                     <div class="reviews__footer">
-                                        <time class="reviews__time">1 минуту назад</time>
+                                        <span class="reviews__time">1 минуту назад</span>
                                         <button type="button" class="reviews__answer-button">Ответить</button>
                                     </div>
                                 </li>
@@ -220,7 +220,7 @@
                                         <div class="reviews__advice">Советует</div>
                                     </div>
                                     <div class="reviews__footer">
-                                        <time class="reviews__time">1 минуту назад</time>
+                                        <span class="reviews__time">1 минуту назад</span>
                                         <button type="button" class="reviews__answer-button">Ответить</button>
                                     </div>
                                 </li>
@@ -240,9 +240,7 @@
                                 <h3>E-mail</h3>
                                 <p><a href="mailto:info@avto-moto.ru">info@avto-moto.ru</a></p>
                             </div>
-                            <div class="contacts__map">
-                                <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2823.9784923193183!2d30.322732205870896!3d59.96773960595467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696315bc4c7c80d%3A0x245ea6f5ab1210f6!2sArt%20Event%20Group!5e0!3m2!1sru!2sru!4v1595215495021!5m2!1sru!2sru" width="431" height="271" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
-                            </div>
+                            <div class="contacts__map"></div>
                         </div>
                     </div>
                 </div>
