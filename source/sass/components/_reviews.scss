@@ -25,6 +25,13 @@
   }
 }
 
+@media (max-width: 1023px) {
+  .reviews__new {
+    position: relative;
+    margin-bottom: 30px;
+  }
+}
+
 .reviews__item {
   padding-top: 20px;
   padding-bottom: 18px;
@@ -53,6 +60,12 @@
     font-size: 15px;
     line-height: 20px;
     margin-right: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .reviews__mark {
+    display: none;
   }
 }
 

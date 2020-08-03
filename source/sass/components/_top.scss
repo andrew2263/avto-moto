@@ -2,3 +2,16 @@
   padding-top: 75px;
   padding-bottom: 90px;
 }
+
+@media (max-width: 1023px) {
+  .top {
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .top {
+    padding-bottom: 40px;
+  }
+}

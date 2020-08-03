@@ -3,10 +3,24 @@
   margin-right: 6px;
 }
 
+@media (max-width: 1023px) {
+  .tabs {
+    padding-bottom: 80px;
+  }
+}
+
 .tabs__list {
   display: flex;
   margin-bottom: 30px;
   margin-left: 10px;
+}
+
+@media (max-width: 767px) {
+  .tabs__list {
+    overflow-x: hidden;
+    width: calc(130px + 50vw);
+    margin-left: 0;
+  }
 }
 
 .tabs__link {
@@ -19,7 +33,7 @@
 }
 
 .tabs__item {
-  width: 195px;
+  min-width: 195px;
   height: 50px;
   display: inline-flex;
   justify-content: center;
@@ -52,9 +66,21 @@
   }
 }
 
+@media (max-width: 767px) {
+  .tabs__panel {
+    margin-left: 0;
+  }
+}
+
 .specs {
   width: 565px;
   border-spacing: 0;
+}
+
+@media (max-width: 1023px) {
+  .specs {
+    width: 100%;
+  }
 }
 
 .specs td {
@@ -83,6 +109,21 @@
   }
 }
 
+@media (max-width: 1023px) {
+  .specs__spec_first {
+    padding-top: 16px;
+  }
+
+  .specs__value_first {
+    padding-top: 16px;
+  }
+
+  .specs__spec,
+  .specs__value {
+    padding-bottom: 13px;
+  }
+}
+
 .faded {
   opacity: 0;
   transition: opacity 0.5s;
@@ -101,6 +142,29 @@
 .contacts__text {
   margin-right: 90px;
   color: #1a212f;
+}
+
+@media (max-width: 1023px) {
+  .contacts__text {
+    margin-right: 28px;
+    width: 274px;
+  }
+}
+
+@media (max-width: 767px) {
+  .contacts {
+    flex-direction: column;
+  }
+
+  .contacts__text {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .contacts__opening-hours,
+  .contacts__email {
+    display: none;
+  }
 }
 
 .contacts__text h3 {
@@ -135,4 +199,18 @@
   display: inline-block;
   width: 431px;
   height: 271px;
+}
+
+@media (max-width: 1023px) {
+  .contacts__map {
+    width: 283px;
+    height: 283px;
+  }
+}
+
+@media (max-width: 767px) {
+  .contacts__map {
+    width: 288px;
+    height: 288px;
+  }
 }

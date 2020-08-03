@@ -1,11 +1,15 @@
 'use strict';
 (function () {
+  var body = document.querySelector('body');
   var buttonPrev = document.querySelector('.previews__button_left');
   var buttonNext = document.querySelector('.previews__button_right');
   var previewsItems = document.querySelectorAll('.previews__item');
   var mainImage = document.querySelector('.images__main').querySelector('img');
   var myStorage = localStorage;
   var reviewsList = document.querySelector('.reviews__list');
+  var tabsList = document.querySelector('.tabs__list');
+  var touchStartX;
+  var touchEndX;
 
   document.addEventListener('DOMContentLoaded', function () {
     if (myStorage.getItem('reviews__list')) {
@@ -35,6 +39,7 @@
         previewsItems[activeItemNumber + 1].classList.add('previews__item_active');
         mainImage.src = previewsItems[activeItemNumber + 1].dataset.image;
         mainImage.srcset = previewsItems[activeItemNumber + 1].dataset.srcset;
+        mainImage.sizes = previewsItems[activeItemNumber + 1].dataset.sizes;
       }
       if (activeItemNumber === previewsItems.length - 2) {
         buttonNext.disabled = true;
@@ -56,10 +61,84 @@
         previewsItems[activeItemNumber - 1].classList.add('previews__item_active');
         mainImage.src = previewsItems[activeItemNumber - 1].dataset.image;
         mainImage.srcset = previewsItems[activeItemNumber - 1].dataset.srcset;
+        mainImage.sizes = previewsItems[activeItemNumber - 1].dataset.sizes;
       }
       if (activeItemNumber === 1) {
         buttonPrev.disabled = true;
         buttonPrev.classList.add('previews__button_disabled');
+      }
+    }
+  });
+
+  mainImage.addEventListener('touchstart', function (e) {
+    e.preventDefault();
+    if (window.innerWidth <= 767) {
+      touchStartX = e.changedTouches[0].clientX;
+    }
+  });
+
+  mainImage.addEventListener('touchend', function (e) {
+    if (window.innerWidth <= 767) {
+      touchEndX = e.changedTouches[0].clientX;
+      var activeItemNumber = getActiveItemNumber(previewsItems, 'previews__item_active');
+      if ((touchEndX - touchStartX) < 0) {
+        if (activeItemNumber <= previewsItems.length - 2) {
+          previewsItems[activeItemNumber].classList.remove('previews__item_active');
+          previewsItems[activeItemNumber + 1].classList.add('previews__item_active');
+          mainImage.src = previewsItems[activeItemNumber + 1].dataset.image;
+          mainImage.srcset = previewsItems[activeItemNumber + 1].dataset.srcset;
+          mainImage.sizes = previewsItems[activeItemNumber + 1].dataset.sizes;
+        }
+        if (activeItemNumber === previewsItems.length - 1) {
+          previewsItems[activeItemNumber].classList.remove('previews__item_active');
+          previewsItems[0].classList.add('previews__item_active');
+          mainImage.src = previewsItems[0].dataset.image;
+          mainImage.srcset = previewsItems[0].dataset.srcset;
+          mainImage.sizes = previewsItems[0].dataset.sizes;
+        }
+      }
+      if ((touchEndX - touchStartX > 0)) {
+        if (activeItemNumber >= 1) {
+          previewsItems[activeItemNumber].classList.remove('previews__item_active');
+          previewsItems[activeItemNumber - 1].classList.add('previews__item_active');
+          mainImage.src = previewsItems[activeItemNumber - 1].dataset.image;
+          mainImage.srcset = previewsItems[activeItemNumber - 1].dataset.srcset;
+          mainImage.sizes = previewsItems[activeItemNumber - 1].dataset.sizes;
+        }
+        if (activeItemNumber === 0) {
+          previewsItems[activeItemNumber].classList.remove('previews__item_active');
+          previewsItems[previewsItems.length - 1].classList.add('previews__item_active');
+          mainImage.src = previewsItems[previewsItems.length - 1].dataset.image;
+          mainImage.srcset = previewsItems[previewsItems.length - 1].dataset.srcset;
+          mainImage.sizes = previewsItems[previewsItems.length - 1].dataset.sizes;
+        }
+      }
+    }
+  });
+
+  tabsList.addEventListener('touchstart', function (e) {
+    if (window.innerWidth <= 767) {
+      touchStartX = e.changedTouches[0].clientX;
+    }
+  });
+
+  tabsList.addEventListener('touchend', function (e) {
+    if (window.innerWidth <= 767) {
+      touchEndX = e.changedTouches[0].clientX;
+      var touchCoord = touchStartX - touchEndX;
+      if (touchCoord > 0) {
+        tabsList.scrollTo({
+          top: 0,
+          left: 288 + touchCoord,
+          behavior: 'smooth'
+        });
+      }
+      if (touchCoord < 0) {
+        tabsList.scrollTo({
+          top: 0,
+          left: 288 + touchCoord,
+          behavior: 'smooth'
+        });
       }
     }
   });
@@ -151,6 +230,7 @@
       reviewsList.appendChild(newReviewsItem);
       myStorage.setItem('reviews__list', reviewsList.innerHTML);
       popupContainer.style.display = 'none';
+      body.style.overflowY = 'auto';
       cleanForm();
       return;
     }
@@ -204,18 +284,21 @@
   addReview.addEventListener('click', function (e) {
     e.preventDefault();
     popupContainer.style.display = 'flex';
+    body.style.overflowY = 'hidden';
     reviewName.focus();
   });
 
   popupClose.addEventListener('click', function (e) {
     e.preventDefault();
     popupContainer.style.display = 'none';
+    body.style.overflowY = 'auto';
     cleanForm();
   });
 
   popupContainer.addEventListener('click', function (e) {
     if (e.target === popupContainer) {
       popupContainer.style.display = 'none';
+      body.style.overflowY = 'auto';
       cleanForm();
     }
   });
@@ -228,7 +311,31 @@
   document.addEventListener('keydown', function (e) {
     if (popupContainer.style.display === 'flex' && e.code === 'Escape') {
       popupContainer.style.display = 'none';
+      body.style.overflowY = 'auto';
       cleanForm();
     }
+  });
+
+  var headerNavContainer = document.querySelector('.header__nav-container');
+  var headerBurger = document.querySelector('.header__burger');
+  var headerClose = document.querySelector('.header__close');
+  var header = document.querySelector('.header');
+
+  headerBurger.addEventListener('click', function (e) {
+    e.preventDefault();
+    headerNavContainer.style.display = 'block';
+    headerBurger.style.display = 'none';
+    headerClose.style.display = 'inline-block';
+    header.classList.add('header_fixed');
+    body.style.overflowY = 'hidden';
+  });
+
+  headerClose.addEventListener('click', function (e) {
+    e.preventDefault();
+    headerNavContainer.style.display = 'none';
+    headerBurger.style.display = 'inline-flex';
+    headerClose.style.display = 'none';
+    header.classList.remove('header_fixed');
+    body.style.overflowY = 'auto';
   });
 })();

@@ -5,8 +5,21 @@
 }
 
 body {
+  min-width: 1170px;
   font-family: "Open Sans", "Arial", sans-serif;
   color: #48494d;
+}
+
+@media (max-width: 1023px) {
+  body {
+    min-width: 726px;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    min-width: 288px;
+  }
 }
 
 ul {
@@ -24,7 +37,7 @@ button {
 }
 
 img {
-  width: 100%;
+  //width: 100%;
   border: 0;
   position: relative;
   vertical-align: bottom;
@@ -45,6 +58,23 @@ img {
 
 .container_flex-start {
   display: flex;
+}
+
+
+@media (max-width: 1023px) {
+  .container {
+    width: 726px;
+  }
+
+  .container_flex-start {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 288px;
+  }
 }
 
 .visually-hidden {

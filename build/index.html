@@ -20,22 +20,35 @@
                     <p class="header__name_moto">Moto</p>
                 </div>
             </div>
-            <nav class="header__nav">
-                <ul class="header__menu">
-                    <li class="header__item">
-                        <a href="#" class="header__link">Автомобили</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="#" class="header__link">Контакты</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="#" class="header__link">Услуги</a>
-                    </li>
-                    <li class="header__item">
-                        <a href="#" class="header__link">Вакансии</a>
-                    </li>
-                </ul>
-            </nav>
+            <div class="header__nav-container">
+                <div class="header__nav-wrapper">
+                    <nav class="header__nav">
+                        <ul class="header__menu">
+                            <li class="header__item">
+                                <a href="#" class="header__link">Автомобили</a>
+                            </li>
+                            <li class="header__item">
+                                <a href="#" class="header__link">Контакты</a>
+                            </li>
+                            <li class="header__item">
+                                <a href="#" class="header__link">Услуги</a>
+                            </li>
+                            <li class="header__item">
+                                <a href="#" class="header__link">Вакансии</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <button class="header__burger">
+                <span class="header__stripe"></span>
+                <span class="header__stripe"></span>
+                <span class="header__stripe"></span>
+            </button>
+            <button class="header__close">
+                <span class="header__close-1"></span>
+                <span class="header__close-2"></span>
+            </button>
         </div>
     </header>
     <main>
@@ -46,22 +59,26 @@
                     <h2 class="visually-hidden">Фотографии автомобиля</h2>
                     <div class="images__main images__main_new">
                         <!-- 1x: 600px; 1.5x: 900px; 2x: 1200px -->
-                        <img src="img/car_big.jpg" srcset="img/car_big@1.5x.jpg 1.5x, img/car_big@2x.jpg 2x" alt="Автомобиль снаружи" width="600" height="375">
+                        <!-- img src="img/car_big.jpg" srcset="img/car_big@1.5x.jpg 1.5x, img/car_big@2x.jpg 2x" alt="Автомобиль снаружи" width="600" height="375" -->
+                        <img srcset="img/car_big_726.jpg 726w, img/car_big.jpg 600w, img/car_big_288.jpg 288w" sizes="(max-width: 767px) 288px, (max-width: 1023px) 726px, 600px" src="img/car_big.jpg" alt="Автомобиль снаружи">
                         <div class="images__new">New model</div>
                     </div>
                     <div class="previews">
                         <button type="button" class="previews__button previews__button_left previews__button_disabled" aria-label="Назад" disabled="">
                         </button>
                         <ul class="previews__list">
-                            <li class="previews__item previews__item_active" data-image="img/car_big.jpg" data-srcset="img/car_big@1.5x.jpg 1.5x, img/car_big@2x.jpg 2x">
+                            <!-- li class="previews__item previews__item_active" data-image="img/car_big.jpg" data-srcset="img/car_big@1.5x.jpg 1.5x, img/car_big@2x.jpg 2x" -->
+                            <li class="previews__item previews__item_active" data-image="img/car_big.jpg" data-srcset="img/car_big_726.jpg 726w, img/car_big.jpg 600w, img/car_big_288.jpg 288w" data-sizes="(max-width: 767px) 288px, (max-width: 1023px) 726px, 600px">
                                 <!-- 1x: 128px; 1.5x: 192px; 2x: 256px -->
                                 <img src="img/car_small.jpg" srcset="img/car_small@1.5x.jpg 1.5x, img/car_small@2x.jpg 2x" alt="Автомобиль снаружи" width="128" height="80">
                             </li>
-                            <li class="previews__item" data-image="img/car_inside_big.jpg" data-srcset="img/car_inside_big@1.5x.jpg 1.5x, img/car_inside_big@2x.jpg 2x">
+                            <!-- li class="previews__item" data-image="img/car_inside_big.jpg" data-srcset="img/car_inside_big@1.5x.jpg 1.5x, img/car_inside_big@2x.jpg 2x" -->
+                            <li class="previews__item" data-image="img/car_inside_big.jpg" data-srcset="img/car_inside_big_726.jpg 726w, img/car_inside_big.jpg 600w, img/car_inside_big_288.jpg 288w" data-sizes="(max-width: 767px) 288px, (max-width: 1023px) 726px, 600px">
                                 <!-- 1x: 128px; 1.5x: 192px; 2x: 256px -->
                                 <img src="img/car_inside_small.jpg" srcset="img/car_inside_small@1.5x.jpg 1.5x, img/car_inside_small@2x.jpg 2x" alt="Салон автомобиля" width="128" height="80">
                             </li>
-                            <li class="previews__item" data-image="img/car_speed_big.jpg" data-srcset="img/car_speed_big@1.5x.jpg 1.5x, img/car_speed_big@2x.jpg 2x">
+                            <!-- li class="previews__item" data-image="img/car_speed_big.jpg" data-srcset="img/car_speed_big@1.5x.jpg 1.5x, img/car_speed_big@2x.jpg 2x" -->
+                            <li class="previews__item" data-image="img/car_speed_big.jpg" data-srcset="img/car_speed_big_726.jpg 726w, img/car_speed_big.jpg 600w, img/car_speed_big_288.jpg 288w" data-sizes="(max-width: 767px) 288px, (max-width: 1023px) 726px, 600px">
                                 <!-- 1x: 128px; 1.5x: 192px; 2x: 256px -->
                                 <img src="img/car_speed_small.jpg" srcset="img/car_speed_small@1.5x.jpg 1.5x, img/car_speed_small@2x.jpg 2x" alt="Приборная панель автомобиля" width="128" height="80">
                             </li>
@@ -151,6 +168,7 @@
                     </div>
                     <div class="tabs__panel faded" id="reviews">
                         <div class="reviews">
+                            <button type="button" class="reviews__new">Оставить отзыв</button>
                             <ul class="reviews__list">
                                 <li class="reviews__item">
                                     <h3>Борис Иванов</h3>
@@ -204,10 +222,10 @@
                                     </div>
                                     <div class="reviews__comment">
                                         <h4>Комментарий</h4>
-                                        <p>
+                                        <div class="reviews__comment-text">
                                             Дизайн отличный, управление просто шикарно, ощущения за рулём такой машины особые. Но ремонт очень дорогой. Пару месяцев назад пришлось менять двигатель.
                                             По стоимости вышло как новый автомобиль. Так что, если покупать эту машину, надо быть готовым к большим расходам на обслуживание.
-                                        </p>
+                                        </div>
                                     </div>
                                     <div class="reviews__rating">
                                         <ul class="reviews__rate-list">
@@ -225,7 +243,6 @@
                                     </div>
                                 </li>
                             </ul>
-                            <button type="button" class="reviews__new">Оставить отзыв</button>
                         </div>
                     </div>
                     <div class="tabs__panel faded" id="contacts">
@@ -233,12 +250,16 @@
                             <div class="contacts__text">
                                 <h3>Адрес</h3>
                                 <address>Санкт-Петербург,<br> набережная реки Карповки, дом 5</address>
-                                <h3>Режим работы</h3>
-                                <p>Ежедневно, с 10:00 до 21:00</p>
+                                <div class="contacts__opening-hours">
+                                    <h3>Режим работы</h3>
+                                    <p>Ежедневно, с 10:00 до 21:00</p>
+                                </div>
                                 <h3>Телефон</h3>
                                 <p><a href="tel:+78003335599">8 (800) 333-55-99</a></p>
-                                <h3>E-mail</h3>
-                                <p><a href="mailto:info@avto-moto.ru">info@avto-moto.ru</a></p>
+                                <div class="contacts__email">
+                                    <h3>E-mail</h3>
+                                    <p><a href="mailto:info@avto-moto.ru">info@avto-moto.ru</a></p>
+                                </div>
                             </div>
                             <div class="contacts__map"></div>
                         </div>
@@ -294,7 +315,7 @@
                             <input type="text" name="review-minuses" id="review-minuses" class="popup__input" placeholder="Недостатки">
                         </div>
                     </div>
-                    <div class="popup__column">
+                    <div class="popup__column popup__column_rate">
                         <div class="popup__rate">
                             <p>Оцените товар:</p>
                             <div class="popup__rating">

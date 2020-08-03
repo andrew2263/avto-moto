@@ -4,6 +4,12 @@
   align-items: center;
 }
 
+@media (max-width: 767px) {
+  .previews {
+    display: none;
+  }
+}
+
 .previews__button {
   border: 1px solid #d7d9df;
   background-color: transparent;

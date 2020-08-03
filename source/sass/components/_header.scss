@@ -3,10 +3,25 @@
   height: 84px;
 }
 
+.header_fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+@media (max-width: 1023px) {
+  .header {
+    height: 75px;
+    z-index: 1000;
+  }
+}
+
 .header__logo {
   display: flex;
   flex-direction: row;
   align-items: center;
+  z-index: 1000;
 }
 
 .header__logo-wrap {
@@ -50,6 +65,59 @@
   }
 }
 
+
+@media (max-width: 1023px) {
+  .header__nav-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 75px;
+    width: 100%;
+    height: 100vh;
+    z-index: 500;
+    overflow: hidden;
+    background-color: #f5f5f9;
+  }
+
+  .header__nav-wrapper {
+    position: relative;
+    width: 726px;
+    margin: 0 auto;
+  }
+
+  .header__nav {
+    max-width: 726px;
+    padding: 20px;
+    text-align: right;
+    background-color: #f5f5f9;
+  }
+
+  .header__menu {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .header__item {
+    margin-right: 0;
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .header__nav-wrapper {
+    width: 288px;
+  }
+
+  .header__nav {
+    width: 288px;
+  }
+}
+
 .header__link {
   font-weight: 600;
   font-size: 16px;
@@ -58,4 +126,68 @@
   &:hover {
     text-decoration: underline;
   }
+}
+
+.header__burger {
+  display: none;
+  border: none;
+  background-color: transparent;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.header__stripe {
+  display: inline-block;
+  width: 29px;
+  border: 2px solid #48494d;
+  margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .header__burger {
+    display: inline-flex;
+  }
+}
+
+.header__close {
+  display: none;
+  position: relative;
+  width: 29px;
+  z-index: 1000;
+  border: none;
+  background-color: transparent;
+
+  &:hover .header__close-1,
+  &:hover .header__close-2 {
+    background-color: #000000;
+    transition: all 0.5s;
+  }
+}
+
+.header__close-1 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 34px;
+  background-color: #48494d;
+  transform: rotate(45deg);
+  transition: all 0.5s;
+}
+
+.header__close-2 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 34px;
+  background-color: #48494d;
+  transform: rotate(315deg);
+  transition: all 0.5s;
 }

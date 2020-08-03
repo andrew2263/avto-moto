@@ -4,9 +4,31 @@
   padding-top: 15px;
 }
 
+@media (max-width: 1023px) {
+  .images {
+    margin-right: 0;
+    margin-bottom: 60px;
+    width: 726px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .images {
+    width: 288px;
+    margin-bottom: 20px;
+  }
+}
+
 .images__main {
   position: relative;
   margin-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+  .images__main {
+    margin-bottom: 0;
+  }
 }
 
 .images__new {
