@@ -10,6 +10,12 @@ body {
   color: #48494d;
 }
 
+@media (max-width: 1200px) {
+  body {
+    min-width: 1000px;
+  }
+}
+
 @media (max-width: 1023px) {
   body {
     min-width: 726px;
@@ -37,7 +43,6 @@ button {
 }
 
 img {
-  //width: 100%;
   border: 0;
   position: relative;
   vertical-align: bottom;
@@ -60,10 +65,18 @@ img {
   display: flex;
 }
 
+@media (max-width: 1200px) {
+  .container {
+    width: 1000px;
+    padding: 0 20px;
+  }
+}
+
 
 @media (max-width: 1023px) {
   .container {
     width: 726px;
+    padding: 0;
   }
 
   .container_flex-start {

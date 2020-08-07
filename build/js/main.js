@@ -338,4 +338,22 @@
     header.classList.remove('header_fixed');
     body.style.overflowY = 'auto';
   });
+
+  window.addEventListener('resize', function () {
+    if ((window.innerWidth > 1023) && (headerBurger.style.display === 'inline-flex')) {
+      headerBurger.style.display = 'none';
+      headerNavContainer.style.display = 'block';
+    }
+
+    if ((window.innerWidth < 1023) && (headerNavContainer.style.display === 'block') && (headerClose.style.display === 'none')) {
+      headerBurger.style.display = 'inline-flex';
+      headerNavContainer.style.display = 'none';
+    }
+
+    if ((window.innerWidth > 1023) && (headerClose.style.display === 'inline-block')) {
+      headerClose.style.display = 'none';
+      header.classList.remove('header_fixed');
+      body.style.overflowY = 'auto';
+    }
+  });
 })();

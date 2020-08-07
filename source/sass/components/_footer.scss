@@ -26,7 +26,26 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .footer__list {
+    justify-content: space-between;
+  }
+
+  .footer__item {
+    margin-right: 30px;
+  }
+
+  .footer__link {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
 @media (max-width: 1023px) {
+  .footer__list {
+    justify-content: flex-start;
+  }
+
   .footer__item {
     margin-bottom: 20px;
     margin-right: 0;
@@ -43,6 +62,11 @@
       margin-bottom: 0;
       margin-right: 0;
     }
+  }
+
+  .footer__link {
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 
